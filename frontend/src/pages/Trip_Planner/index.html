@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Jharkhand Trip Map Planner</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    #map {
+      height: 100vh;
+      width: 100vw;
+    }
+    .controls {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255,255,255,0.95);
+      padding: 10px 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      z-index: 1000;
+    }
+    .controls button, .controls select {
+      padding: 8px 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      background: #ff8c00;
+      color: white;
+      transition: 0.2s;
+    }
+    .controls button:hover {
+      background: #ff5722;
+    }
+    .controls select {
+      background: white;
+      color: black;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="controls">
+    <button onclick="showCategory('heritage')">🏛 Heritage</button>
+    <button onclick="showCategory('lakes')">🌊 Lakes</button>
+    <button onclick="showCategory('dams')">🏞 Dams</button>
+    <button onclick="clearMarkers()">❌ Clear</button>
+
+    <label>From:</label>
+    <select id="startSelect"></select>
+    <label>To:</label>
+    <select id="endSelect"></select>
+    <button onclick="drawRoute()">🚗 Show Route</button>
+  </div>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+  <script>
+    // Initialize map
+    const map = L.map('map').setView([23.6102, 85.2799], 7);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Marker groups
+    const markers = {
+      heritage: [
+        { name: "Tagore Hill (Ranchi)", coords: [23.3915, 85.3349] },
+        { name: "Parasnath Hill (Giridih)", coords: [23.9057, 86.1490] }
+      ],
+      lakes: [
+        { name: "Dimna Lake (Jamshedpur)", coords: [22.8512, 86.2715] },
+        { name: "Topchanchi Lake (Dhanbad)", coords: [23.9046, 86.1189] }
+      ],
+      dams: [
+        { name: "Maithon Dam (Dhanbad)", coords: [23.8008, 86.8132] },
+        { name: "Massanjore Dam (Dumka)", coords: [24.0580, 87.6151] },
+        { name: "Kelaghagh Dam (Simdega)", coords: [22.6155, 84.5039] }
+      ]
+    };
+
+    let currentMarkers = [];
+    let routingControl = null;
+
+    // Populate dropdowns with all places
+    const allPlaces = [
+      ...markers.heritage,
+      ...markers.lakes,
+      ...markers.dams
+    ];
+
+    const startSelect = document.getElementById('startSelect');
+    const endSelect = document.getElementById('endSelect');
+
+    allPlaces.forEach((place, idx) => {
+      const option1 = document.createElement('option');
+      option1.value = idx;
+      option1.textContent = place.name;
+      startSelect.appendChild(option1);
+
+      const option2 = document.createElement('option');
+      option2.value = idx;
+      option2.textContent = place.name;
+      endSelect.appendChild(option2);
+    });
+
+    // Show category markers
+    function showCategory(category) {
+      clearMarkers();
+      markers[category].forEach(place => {
+        const marker = L.marker(place.coords).addTo(map)
+          .bindPopup(`<b>${place.name}</b>`);
+        currentMarkers.push(marker);
+      });
+    }
+
+    // Clear all markers & routes
+    function clearMarkers() {
+      currentMarkers.forEach(marker => map.removeLayer(marker));
+      currentMarkers = [];
+      if (routingControl) {
+        map.removeControl(routingControl);
+        routingControl = null;
+      }
+    }
+
+    // Draw route between selected places
+    function drawRoute() {
+      if (routingControl) {
+        map.removeControl(routingControl);
+      }
+
+      const startIdx = startSelect.value;
+      const endIdx = endSelect.value;
+
+      if (startIdx === "" || endIdx === "" || startIdx === endIdx) {
+        alert("Please select two different destinations!");
+        return;
+      }
+
+      const startCoords = allPlaces[startIdx].coords;
+      const endCoords = allPlaces[endIdx].coords;
+
+      routingControl = L.Routing.control({
+        waypoints: [
+          L.latLng(startCoords[0], startCoords[1]),
+          L.latLng(endCoords[0], endCoords[1])
+        ],
+        lineOptions: {
+          styles: [{ color: '#ff5722', weight: 5 }]
+        },
+        createMarker: function(i, waypoint, n) {
+          return L.marker(waypoint.latLng).bindPopup(i === 0 ? "Start" : "End");
+        },
+        routeWhileDragging: false,
+        show: false
+      }).addTo(map);
+    }
+  </script>
+</body>
+</html>

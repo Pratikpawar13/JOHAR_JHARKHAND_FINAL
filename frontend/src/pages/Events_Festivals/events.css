@@ -1,0 +1,293 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+:root {
+  color-scheme: light dark;
+}
+
+/* custom property for image rotation */
+@property --imgRotate {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+
+/* minimal reset */
+body {
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+.eventscontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(70, 70, 70, 0.103);
+  /* dark translucent layer */
+  backdrop-filter: blur(2px);
+  /* blur whatever is behind */
+  /* -----------------------background-color: red; */
+}
+
+.eventstbox {
+  width: 90%;
+  height: 10vh;
+  padding-left: 2rem;
+}
+
+.eventstbox p {
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  /* bold but not too heavy */
+  font-size: 2rem;
+  /* larger for section heading */
+
+  color: #e1dcda;
+  /* main text color */
+  text-align: center;
+  /* center the heading */
+
+  /* soft shadow for contrast on backgrounds */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  border-bottom: 3px solid #154627;
+  /* a green accent, tweak to match theme */
+  width: fit-content;
+}
+
+/* Root container */
+activities-widget {
+  container: activities-widget / inline-size;
+  width: 100vw;
+  height: 80vh;
+  /* background-color: red; */
+
+  margin-inline: auto;
+  padding: 5rem 20rem;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1lh auto auto;
+  gap: 0.5rem 2rem;
+  position: relative;
+}
+
+/* Each activity spans the whole grid (stacked) */
+activities-widget>.activity {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+}
+
+/* Image wrapper */
+activities-widget>.activity .img {
+  grid-column: 1 / 2;
+  grid-row: 1 / 4;
+  width: 25vw;
+  aspect-ratio: 1;
+  overflow: clip;
+
+  border-radius: 8px;
+  border: 3px solid light-dark(#fff, #333);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+
+  rotate: var(--imgRotate, 0deg);
+  transition: 0.2s;
+}
+
+activities-widget>.activity .img>img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Per-card rotations */
+activities-widget>.activity:nth-child(1) .img {
+  --imgRotate: 4deg;
+}
+
+activities-widget>.activity:nth-child(2) .img {
+  --imgRotate: -2deg;
+}
+
+activities-widget>.activity:nth-child(3) .img {
+  --imgRotate: -9deg;
+}
+
+activities-widget>.activity:nth-child(4) .img {
+  --imgRotate: 7deg;
+}
+
+/* Text (hidden until active) */
+activities-widget>.activity .text {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+
+  padding: 1rem;
+  border-radius: 30px;
+
+  color: rgba(30, 30, 30, 0.6);
+  color: light-dark(rgba(30, 30, 30, 0.6), rgba(0, 0, 0, 0.727));
+
+  opacity: 0;
+  translate: 0 20px;
+  transition: 0.8s cubic-bezier(0.85, 0, 0.15, 1);
+
+  pointer-events: none;
+}
+
+activities-widget>.activity .text h3 {
+  font-size: 1.6rem;
+  font-family: "Playfair Display, serif";
+  font-weight: bold;
+  color: #000;
+  color: light-dark(#000, #ff6a00);
+  margin: 0;
+}
+
+/* Active card: reveal text + animate image */
+activities-widget>.activity.active .text {
+  /* width: 30vw; */
+  font-size: 1.3rem;
+  opacity: 1;
+  translate: 0 0;
+  padding: 1rem;
+  border-radius: 30px;
+  pointer-events: all;
+  background: rgba(255, 255, 255, 0.812);
+  /* dark translucent layer */
+  backdrop-filter: blur(6px);
+  /* blur whatever is behind */
+  -webkit-backdrop-filter: blur(6px);
+}
+
+activities-widget>.activity.active .img {
+  width: 28vw;
+  animation: 0.66s moveOutIn cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* While switching, straighten */
+activities-widget.children-animating .img {
+  animation: 0.75s straightenImages;
+}
+
+/* Nav + count */
+activities-widget .activities-navigation {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+
+  user-select: none;
+  place-self: end;
+  z-index: 99;
+
+  display: flex;
+  gap: 0.5rem;
+}
+
+.explorebtn {
+  padding: 0.5rem;
+  transform: translate(-1rem, 0);
+  border-radius: 0.6rem;
+  border: 2px solid #fff;
+  background: rgba(246, 123, 22, 0.85);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.explorebtn:hover{
+  background: #ff5e00;
+  color: #fff;
+}
+activities-widget .activities-navigation>button {
+  width: 40px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+
+  border: 2px solid #000;
+  /* always visible outline */
+  background: rgba(255, 255, 255, 0.85);
+  /* light fill to stand out */
+  color: #000;
+  cursor: pointer;
+  font-size: 1.2rem;
+
+  transition: background 0.2s, color 0.2s;
+}
+
+/* dark mode adjust */
+@media (prefers-color-scheme: dark) {
+  activities-widget .activities-navigation>button {
+    border: 2px solid #fff;
+    background: rgba(246, 123, 22, 0.85);
+    color: #fff;
+  }
+}
+
+/* hover / focus */
+activities-widget .activities-navigation>button:hover,
+activities-widget .activities-navigation>button:focus {
+  background: #ff5e00;
+  color: #fff;
+}
+
+/* slide count */
+activities-widget .activities-count {
+  grid-column: 2 / -1;
+  place-self: start;
+  z-index: 99;
+  color: rgb(80, 80, 80);
+  font-size: 0.875rem;
+}
+
+/* Compact layout (mobile) */
+@container activities-widget (width < 300px) {
+  activities-widget {
+    display: block;
+    padding: 1rem;
+  }
+
+  activities-widget>.activity {
+    display: block;
+    margin-block-end: 3rem;
+  }
+
+  activities-widget>.activity .img {
+    max-inline-size: 125px;
+    margin-inline: auto;
+    margin-block-end: 0.5rem;
+  }
+
+  activities-widget>.activity .text {
+    opacity: 1;
+    translate: 0 0;
+    pointer-events: all;
+    background: none;
+  }
+
+  activities-widget .activities-navigation,
+  activities-widget .activities-count {
+    display: none;
+  }
+}
+
+/* Keyframes */
+@keyframes straightenImages {
+  50% {
+    --imgRotate: 0deg;
+  }
+}
+
+@keyframes moveOutIn {
+  50% {
+    translate: -100% 0;
+    scale: 1.15;
+  }
+
+  100% {
+    translate: 0 0;
+    z-index: 1;
+  }
+}

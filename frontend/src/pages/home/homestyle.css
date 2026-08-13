@@ -1,0 +1,362 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* full viewport, stays put */
+body {
+  overflow-x: hidden;
+  scrollbar-base-color: black;
+  /* background-color: black; */
+}
+
+/* Chrome, Edge, Safari */
+body::-webkit-scrollbar {
+  width: 8px;
+  /* scrollbar thickness */
+}
+
+body::-webkit-scrollbar-track {
+  background: #000;
+  /* “strip” or track */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #0f0;
+  /* roller/handle */
+  border-radius: 4px;
+  /* round corners */
+}
+
+/* Optional hover effect */
+body::-webkit-scrollbar-thumb:hover {
+  background-color: #1aff1a;
+}
+
+/* Firefox */
+body {
+  scrollbar-width: thin;
+  /* auto | thin */
+  scrollbar-color: #0f0 #000;
+  /* thumb track */
+}
+
+
+#root,
+.app {
+  width: 100%;
+  height: 100%;
+}
+
+
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  background: black;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .hero {
+    height: 85vh;
+  }
+}
+
+.maincontainer {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center;
+    justify-content: center; */
+}
+
+.mainbody {
+  display: flex;
+  align-items: center;
+  box-shadow: 5px 14px 2px rgba(0, 0, 0, 0.603);
+  /* x-offset y-offset blur color */
+  margin-bottom: 1px;
+}
+
+
+.hero {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  /* fill screen */
+  overflow: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  /* Center + rotate 90 degrees */
+  transform: translate(-50%, -50%) rotate(-90deg);
+
+  /* fill the viewport */
+  width: 100vh;
+  /* rotated so width maps to viewport height */
+  height: 100vw;
+  /* rotated so height maps to viewport width */
+  object-fit: cover;
+  /* actually fills, may crop edges */
+}
+
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+}
+
+
+
+.mic-btn {
+  position: absolute;
+  top: 1rem;
+  right: 3rem;
+  z-index: 20;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s;
+  scale: 1.5;
+}
+
+.mic-btn:hover {
+  transform: scale(1.1);
+  color:orange
+}
+
+.mic-btn:active{
+  transform: scale(1.1);
+  color:orange
+}
+
+.mic-icon {
+  width: 3rem;
+  height: 3rem;
+}
+
+
+.Navbar {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  margin-left: 2rem;
+  z-index: 20;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+/*-----logo---------*/
+.imagebox {
+  position: absolute;
+  top: 5rem;
+  left: -2rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+  background: transparent;
+}
+
+.logo-image {
+  width: 25rem;
+  /* slightly bigger, tweak as you like */
+  height: auto;
+  object-fit: contain;
+  margin-top: -1rem;
+
+  /* give it some depth */
+  filter: drop-shadow(1px 5px 10px rgba(0, 0, 0, 0.4));
+
+  /* smooth interaction */
+  transition:
+    transform 0.35s ease,
+    filter 0.35s ease;
+
+  /* optional: soft rounded corners */
+  border-radius: 8px;
+}
+
+/* hover / focus makes it pop */
+.logo-image:hover {
+  transform: scale(1.08) rotate(-2deg);
+  /* gentle grow & tilt */
+  filter: drop-shadow(5px 2px 2px rgba(0, 0, 0, 0.941)) brightness(1.1);
+  /* brighter + deeper shadow */
+}
+
+/* optional: subtle “glow” for dark backgrounds */
+.logo-image.glow {
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+}
+
+/*--------------destinations-styling-------------*/
+.Destinations {
+  width: 100vw;
+  height: 110vh;
+}
+
+/*--------------Trail-corosel-styling-------------*/
+.Trail {
+  width: 100vw;
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.events {
+  position: sticky;
+  width: 100vw;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.trip {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 95vh;
+  /* Full screen */
+  overflow: hidden;
+}
+
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit:fill;
+  /* Makes video cover area like background-image */
+  z-index: 0;
+}
+
+.tripcompo {
+  position: relative;
+  z-index: 1;
+  /* Keeps component above video */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: white;
+  padding: 1rem 4rem;
+  /*------------------If you want text visible--------------- */
+  /* background: rgba(192, 192, 192, 0);
+  border-radius: 16px;
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
+}
+
+.tourDept{
+  background-color: whitesmoke;
+}
+
+
+/*==================== CHATBOT HOMEPAGE ICON STYLING =============================*/
+.chatassistant {
+  position: fixed;
+  bottom: 20px;          /* distance from bottom */
+  right: 20px;           /* distance from right */
+  z-index: 2000;         /* stays above other elements */
+}
+
+/* Floating circular button */
+.assistant-btn {
+  background: linear-gradient(135deg, #ff914d, #ff6a00);
+  border: none;
+  outline: none;
+  border-radius: 50%;
+  width: 65px;
+  height: 65px;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  overflow: visible;
+  padding: 20px;
+  animation: pulseGlow 2.2s infinite;
+}
+
+/* Hover effect */
+.assistant-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Bot icon */
+.botimage {
+  width: 32px;
+  height: 32px;
+  z-index: 2;
+}
+
+/* Notification red dot */
+.assistant-btn::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  right: 3rem;
+  width: 12px;
+  height: 12px;
+  background: #ff2d2d;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(255, 45, 45, 0.8);
+}
+
+/* Bubble glow animation */
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 145, 77, 0.6),
+                0 0 0 8px rgba(255, 145, 77, 0.3),
+                0 0 0 16px rgba(255, 145, 77, 0.1);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(255, 145, 77, 0.2),
+                0 0 0 16px rgba(255, 145, 77, 0.05),
+                0 0 0 24px rgba(255, 145, 77, 0.0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 145, 77, 0);
+  }
+}

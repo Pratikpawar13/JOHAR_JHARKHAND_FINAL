@@ -1,0 +1,172 @@
+{
+  "Simdega": [
+    {
+      "name": "Rekha Devi",
+      "city": "Simdega",
+      "mobile": "8336618692, 9657029308",
+      "email": "rekhadevi73@example.com",
+      "tourist_spot_covered": "Rock Garden Ranchi",
+      "language": "Hindi, Bengali"
+    }
+  ],
+  "Chaibasa": [
+    {
+      "name": "Ajay Kumar",
+      "city": "Chaibasa",
+      "mobile": "9759520702, 9247029882",
+      "email": "ajaykumar458@example.com",
+      "tourist_spot_covered": "Dalma Wildlife Sanctuary",
+      "language": "Hindi, Bengali"
+    },
+    {
+      "name": "Kavita Sharma",
+      "city": "Chaibasa",
+      "mobile": "9056789517, 9502172059",
+      "email": "kavitasharma212@example.com",
+      "tourist_spot_covered": "Parasnath Hills",
+      "language": "Hindi, Santhali, English"
+    }
+  ],
+  "Dumka": [
+    {
+      "name": "Suresh Prasad",
+      "city": "Dumka",
+      "mobile": "9269606548, 9678383149",
+      "email": "sureshprasad499@example.com",
+      "tourist_spot_covered": "Sun Temple Ranchi",
+      "language": "Hindi, English, Bengali"
+    }
+  ],
+  "Bokaro": [
+    {
+      "name": "Chandan Singh",
+      "city": "Bokaro",
+      "mobile": "9625941243, 9153048879",
+      "email": "chandansingh862@example.com",
+      "tourist_spot_covered": "Jagannath Temple Ranchi",
+      "language": "Hindi, English"
+    }
+  ],
+  "Ranchi": [
+    {
+      "name": "Mohan Kumar",
+      "city": "Ranchi",
+      "mobile": "8553710220, 8203955060",
+      "email": "mohankumar186@example.com",
+      "tourist_spot_covered": "Trikuta Hills",
+      "language": "Hindi, Nagpuri, English"
+    }
+  ],
+  "Hazaribagh": [
+    {
+      "name": "Rohit Singh",
+      "city": "Hazaribagh",
+      "mobile": "7506495921, 8068611359",
+      "email": "rohitsingh968@example.com",
+      "tourist_spot_covered": "Netarhat",
+      "language": "Hindi, Bengali"
+    },
+    {
+      "name": "Sanjay Singh",
+      "city": "Hazaribagh",
+      "mobile": "7817751892, 7931806130",
+      "email": "sanjaysingh810@example.com",
+      "tourist_spot_covered": "Rock Garden Ranchi",
+      "language": "Hindi, Santhali, English"
+    }
+  ],
+  "Sahibganj": [
+    {
+      "name": "Suman Kumari",
+      "city": "Sahibganj",
+      "mobile": "7753400491, 8833280094",
+      "email": "sumankumari471@example.com",
+      "tourist_spot_covered": "Hazaribagh National Park",
+      "language": "Hindi, English, Bengali"
+    },
+    {
+      "name": "Abhishek Kumar",
+      "city": "Sahibganj",
+      "mobile": "9037034248, 7036479377",
+      "email": "abhishekkumar209@example.com",
+      "tourist_spot_covered": "Sun Temple Ranchi",
+      "language": "Hindi, Santhali, English"
+    }
+  ],
+  "Lohardaga": [
+    {
+      "name": "Sunita Das",
+      "city": "Lohardaga",
+      "mobile": "9969091849, 7045000524",
+      "email": "sunitadas822@example.com",
+      "tourist_spot_covered": "Patratu Valley",
+      "language": "Hindi, Nagpuri, English"
+    }
+  ],
+  "Dhanbad": [
+    {
+      "name": "Suraj Prasad",
+      "city": "Dhanbad",
+      "mobile": "8257465554, 7850520724",
+      "email": "surajprasad862@example.com",
+      "tourist_spot_covered": "Dalma Wildlife Sanctuary",
+      "language": "Hindi, Santhali, English"
+    },
+    {
+      "name": "Neha Verma",
+      "city": "Dhanbad",
+      "mobile": "9310560026, 7728240469",
+      "email": "nehaverma177@example.com",
+      "tourist_spot_covered": "Maluti Temples",
+      "language": "Hindi, English, Bengali"
+    }
+  ],
+  "Gumla": [
+    {
+      "name": "Naresh Kumar",
+      "city": "Gumla",
+      "mobile": "8615843008, 7708835746",
+      "email": "nareshkumar61@example.com",
+      "tourist_spot_covered": "Hundru Falls",
+      "language": "Hindi, Bengali"
+    }
+  ],
+  "Ramgarh": [
+    {
+      "name": "Dinesh Kumar",
+      "city": "Ramgarh",
+      "mobile": "7587017375, 7942145493",
+      "email": "dineshkumar332@example.com",
+      "tourist_spot_covered": "Hazaribagh National Park",
+      "language": "Hindi, English, Bengali"
+    }
+  ],
+  "Godda": [
+    {
+      "name": "Shweta Kumari",
+      "city": "Godda",
+      "mobile": "9328956526, 7874768223",
+      "email": "shwetakumari811@example.com",
+      "tourist_spot_covered": "Jonha Falls",
+      "language": "Hindi, Nagpuri, English"
+    },
+    {
+      "name": "Pankaj Sharma",
+      "city": "Godda",
+      "mobile": "9049814137, 7601680572",
+      "email": "pankajsharma34@example.com",
+      "tourist_spot_covered": "Netarhat",
+      "language": "Hindi, Bengali"
+    }
+  ],
+  "Pakur": [
+    {
+      "name": "Alok Ranjan",
+      "city": "Pakur",
+      "mobile": "8458726474, 9668352125",
+      "email": "alokranjan382@example.com",
+      "tourist_spot_covered": "Usri Falls",
+      "language": "Hindi, Santhali, English"
+    }
+  ]
+}

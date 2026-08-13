@@ -1,0 +1,213 @@
+/* File: src/pages/businessOpportunity/BusinessOpportunity.css */
+
+/* Root / section */
+.bo-section {
+  padding: 48px 36px;
+  background: #f3f3f3 url("https://www.transparenttextures.com/patterns/soft-wall.png");
+  color: #333;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 700ms ease, transform 700ms ease;
+  --visible: 3; /* JS overrides this inline */
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial;
+}
+
+/* appear on scroll */
+.bo-section.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* inner container to constrain width like screenshot */
+.bo-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header: title left, view more right */
+.bo-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.bo-header h2 {
+  margin: 0;
+  font-family: "Merriweather", serif;
+  font-size: 38px;
+  font-weight: 400;
+  color: #333;
+  letter-spacing: 0.2px;
+}
+
+.bo-viewmore,
+.bo-viewmore:visited {
+  color: #333;
+}
+
+/* small rounded "View More" button on top-right */
+.bo-viewmore,
+.bo-viewmore:visited,
+.bo-viewmore:active {
+  text-decoration: none;
+}
+
+/* optionally style the "View More" link as a small soft button */
+.bo-viewmore {
+  padding: 8px 12px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+/* viewport: shows exactly 'visible' cards */
+.bo-viewport {
+  width: 100%;
+  overflow: hidden;
+  margin: 8px 0 6px 0;
+}
+
+/* the sliding track */
+.bo-track {
+  display: flex;
+  align-items: stretch;
+  will-change: transform;
+  /* track width is implicit; we animate transform */
+}
+
+/* each card outer shell (controls layout/spacing)
+   flex basis uses --visible variable provided from component inline style */
+.bo-card {
+  flex: 0 0 calc(100% / var(--visible));
+  box-sizing: border-box;
+  padding: 0 16px; /* spacing between cards (visible as background) */
+}
+
+/* inner card (actual white rectangle) */
+.bo-card-inner {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 320ms ease, box-shadow 320ms ease;
+  display: flex;
+  flex-direction: column;
+}
+
+/* image area */
+.bo-thumb {
+  width: 100%;
+  height: 260px;
+  background: #eee;
+  overflow: hidden;
+}
+
+.bo-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 420ms ease;
+}
+
+/* caption area */
+.bo-caption {
+  padding: 18px 20px;
+  display: block;
+  color: #333;
+  font-size: 18px;
+  line-height: 1.4;
+  background: #fff;
+  margin-top: auto;
+}
+
+/* hover lift effect (card inner zoom + image scale) */
+.bo-card-inner:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+}
+
+.bo-card-inner:hover .bo-thumb img {
+  transform: scale(1.06);
+}
+
+/* controls below the cards */
+.bo-controls {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 18px;
+  align-items: center;
+}
+
+/* circular arrow buttons */
+.bo-arrow {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  font-size: 20px;
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.bo-arrow:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+.bo-arrow:hover {
+  background: #00796b;
+  color: #fff;
+  border-color: rgba(0, 0, 0, 0.05);
+}
+
+/* arrow glyph styling */
+.bo-arrow .arrow {
+  font-weight: 600;
+}
+
+/* responsive tweaks */
+@media (max-width: 1100px) {
+  .bo-header h2 {
+    font-size: 30px;
+  }
+  .bo-thumb {
+    height: 220px;
+  }
+}
+
+@media (max-width: 700px) {
+  .bo-header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .bo-header h2 {
+    font-size: 24px;
+  }
+  .bo-controls {
+    gap: 14px;
+  }
+  .bo-thumb {
+    height: 180px;
+  }
+  .bo-arrow {
+    width: 46px;
+    height: 46px;
+  }
+}

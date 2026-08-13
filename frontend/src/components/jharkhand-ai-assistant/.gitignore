@@ -1,0 +1,81 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# ────────────────
+# Dependencies
+# ────────────────
+node_modules/
+**/node_modules/
+.pnp
+.pnp.js
+
+# ────────────────
+# Testing
+# ────────────────
+coverage/
+*.lcov
+
+# ────────────────
+# Production builds
+# ────────────────
+build/
+dist/
+.next/
+out/
+
+# ────────────────
+# Environment files
+# ────────────────
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ────────────────
+# Logs
+# ────────────────
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ────────────────
+# OS / Editor junk
+# ────────────────
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# ────────────────
+# Misc
+# ────────────────
+*.tgz
+*.log
+*.bak
+*.tmp
+
+# ────────────────
+# Backend (Node/Express)
+# ────────────────
+/backend/uploads
+/backend/logs
+/backend/*.sqlite
+/backend/*.db
+
+# ────────────────
+# Frontend (React/Vite/Next.js)
+# ────────────────
+/frontend/.cache
+/frontend/.parcel-cache
+
+# Python
+*.pyc
+__pycache__/
+.venv/
+
+# Node
+node_modules/
+build/
+dist/
