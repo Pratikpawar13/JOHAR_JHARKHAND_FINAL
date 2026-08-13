@@ -1,7 +1,7 @@
 import j7 from "../assets/j7.jpg";
 import j8 from "../assets/j8.jpg";
 import j9 from "../assets/j9.jpg";
-import j10 from "../assets/j10.jpg";
+import j10 from "../assets/J10.jpg";
 import j11 from "../assets/j11.jpg";
 
 const destinations = [
