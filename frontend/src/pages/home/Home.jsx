@@ -216,7 +216,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-import heroVideo from "../../pages/home/videos/mainbodyvid.mp4";
+import heroVideo from "./videos/mainbodyvid.mp4";
 import Navbar from "../../components/Navbar.jsx";
 import "./homestyle.css";
 import Destinations from "../topdestinations/Destinations.jsx";
