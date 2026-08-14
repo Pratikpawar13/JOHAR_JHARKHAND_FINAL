@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import "./tripplanner.css";
+import "./TripPlanner.css";
 
 export default function TripPlanner() {
   const ref = useRef(null);
